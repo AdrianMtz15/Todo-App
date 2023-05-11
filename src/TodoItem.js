@@ -1,7 +1,7 @@
 
-function TodoItem() {
+function TodoItem({text, completed}) {
   return(
-        <li>V Tarea X</li>
+        <li>V {text} X</li>
   );
 }
 
