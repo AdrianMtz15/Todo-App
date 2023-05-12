@@ -1,0 +1,25 @@
+.createBtn {
+    /* background-image: url('./img/btnCreate.png');
+    background-size: cover;
+    background-position: center; */
+    position: absolute;
+    right: 18px;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.createBtnCenter {
+    width: 17px;
+    height: 17px;
+    background-image: url('./img/Vector.png');
+    background-position: center;
+    background-size: cover;
+}

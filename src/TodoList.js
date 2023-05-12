@@ -1,9 +1,18 @@
+import './TodoList.css';
 
-function TodoList(props) {
+function TodoList({children, title}) {
   return(
-    <ul>
-      {props.children}
-    </ul>
+    <>
+      <section className='todoList__head'>
+        <h2 className="head__title">{title}</h2>
+        <span className='head__hideCompleted'>Hide Completed</span>
+      </section>
+      
+      <ul className="todoList__list">
+        {children}
+      </ul>
+    </>
+
   );
 }
 

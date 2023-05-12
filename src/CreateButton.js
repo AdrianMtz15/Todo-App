@@ -1,7 +1,10 @@
+import './CreateButton.css';
 
 function CreateButton() {
   return(
-    <button>Create +</button>
+    <button className='createBtn'>
+      <p className='createBtnCenter'></p>
+    </button>
   );
 }
 

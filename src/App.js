@@ -1,31 +1,51 @@
-import './App.css';
-import { TodoCounter } from './TodoCounter';
+import { Header } from './Header';
 import { TodoItem } from './TodoItem';
 import { TodoList } from './TodoList';
-import { TodoSearch } from './TodoSearch';
 import { CreateButton } from './CreateButton';
+import { TodoSearch } from './TodoSearch';
 
 const todos = [
-  { text: "Tarea 1", completed: true },
-  { text: "Tarea 2", completed: true },
-  { text: "Tarea 3", completed: true },
-  { text: "Tarea 4", completed: true }
+  { text: "Tarea 1", completed: true, hour: "13:00" },
+  { text: "Tarea 2", completed: true, hour: "13:00" },
+  { text: "Tarea 3", completed: true, hour: "13:00" },
+  { text: "Tarea 4", completed: true, hour: "13:00" }
 ]
 
 function App() {
   return (
-    <div>
-      <TodoCounter/>
+    <>
+      <Header/>
+
       <TodoSearch/>
-      <TodoList>
+
+      <TodoList title={"Today"}>
         { 
           todos.map(todo => (
-            <TodoItem key={todos.indexOf(todo)} text={todo.text} completed={todo.completed}/>
+            <TodoItem 
+              key={todos.indexOf(todo)} 
+              text={todo.text} 
+              completed={todo.completed} 
+              hour={todo.hour}
+            />
           )) 
         }
       </TodoList>
+
+      <TodoList title={"Tomorrow"}>
+        { 
+          todos.map(todo => (
+            <TodoItem 
+              key={todos.indexOf(todo)} 
+              text={todo.text} 
+              completed={todo.completed} 
+              hour={todo.hour}
+              />
+          )) 
+        }
+      </TodoList>
+
       <CreateButton/>
-    </div>
+    </>
   );
 }
 
