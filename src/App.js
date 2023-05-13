@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 import { Header } from './Header';
 import { TodoItem } from './TodoItem';
@@ -59,6 +60,9 @@ function App() {
       </TodoList>
 
       <CreateButton/>
+      <section className='sectionPrueba'>
+        
+      </section>
     </>
   );
 }
