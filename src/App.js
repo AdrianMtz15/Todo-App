@@ -24,43 +24,44 @@ function App() {
 
   return (
     <>
-      <Header/>
+        <Header/>
 
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        completedTodos={completedTodos}
-        totalTodos={totalTodos}
-      />
+        <TodoSearch 
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          completedTodos={completedTodos}
+          totalTodos={totalTodos}
+        />
 
-      <TodoList title={"Today"}>
-        { 
-          todos.map(todo => (
-            <TodoItem 
-              key={todos.indexOf(todo)} 
-              text={todo.text} 
-              completed={todo.completed} 
-              hour={todo.hour}
-            />
-          )) 
-        }
-      </TodoList>
-
-      <TodoList title={"Tomorrow"}>
-        { 
-          todos.map(todo => (
-            <TodoItem 
-              key={todos.indexOf(todo)} 
-              text={todo.text} 
-              completed={todo.completed} 
-              hour={todo.hour}
+        <TodoList title={"Today"}>
+          { 
+            todos.map(todo => (
+              <TodoItem 
+                key={todos.indexOf(todo)} 
+                text={todo.text} 
+                completed={todo.completed} 
+                hour={todo.hour}
               />
-          )) 
-        }
-      </TodoList>
+            )) 
+          }
+        </TodoList>
 
-      <CreateButton/>
-      <section className='sectionPrueba'>
+        <TodoList title={"Tomorrow"}>
+          { 
+            todos.map(todo => (
+              <TodoItem 
+                key={todos.indexOf(todo)} 
+                text={todo.text} 
+                completed={todo.completed} 
+                hour={todo.hour}
+                />
+            )) 
+          }
+        </TodoList>
+
+        <CreateButton/>
+
+      <section className='app__footer'>
         
       </section>
     </>
