@@ -1,6 +1,8 @@
 import './TodoList.css';
 
 function TodoList({children, title}) {
+  const todosCompleted = children.filter((todo) => todo.props.completed === true);
+
   return(
     <>
       <section className='todoList__head'>

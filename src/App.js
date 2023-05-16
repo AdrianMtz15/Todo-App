@@ -8,11 +8,11 @@ import { CreateButton } from './CreateButton';
 import { TodoSearch } from './TodoSearch';
 
 const defaultTodos = [
-  { text: "Tarea 1", completed: true, hour: "13:00" },
-  { text: "Tarea 2", completed: false, hour: "13:00" },
-  { text: "Tarea 3", completed: false, hour: "13:00" },
-  { text: "Tarea 4", completed: true, hour: "13:00" },
-  { text: "Tarea 5", completed: true, hour: "13:00" }
+  { text: "Tarea 1", completed: true, hour: "13:00", id: 1 },
+  { text: "Tarea 2", completed: false, hour: "13:00", id: 2},
+  { text: "Tarea 3", completed: false, hour: "13:00", id: 3 },
+  { text: "Tarea 4", completed: true, hour: "13:00", id: 4},
+  { text: "Tarea 5", completed: true, hour: "13:00", id: 5}
 ]
 
 function App() {
@@ -21,6 +21,17 @@ function App() {
 
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
+
+  const todosSearched = todos.filter(
+    (todo) => {
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+
+      return todoText.includes(searchText);
+    }
+  );
+
+  console.log(todosSearched);
 
   return (
     <>
@@ -35,9 +46,9 @@ function App() {
 
         <TodoList title={"Today"}>
           { 
-            todos.map(todo => (
+            todosSearched.map(todo => (
               <TodoItem 
-                key={todos.indexOf(todo)} 
+                key={todo.id} 
                 text={todo.text} 
                 completed={todo.completed} 
                 hour={todo.hour}
@@ -46,7 +57,7 @@ function App() {
           }
         </TodoList>
 
-        <TodoList title={"Tomorrow"}>
+        {/* <TodoList title={"Tomorrow"}>
           { 
             todos.map(todo => (
               <TodoItem 
@@ -57,7 +68,7 @@ function App() {
                 />
             )) 
           }
-        </TodoList>
+        </TodoList> */}
 
         <CreateButton/>
 

@@ -1,3 +1,7 @@
+.disabled {
+    display: none;
+}
+
 .todoList__head {
     display: flex;
     direction: row;

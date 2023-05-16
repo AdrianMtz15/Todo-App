@@ -5,6 +5,15 @@
     align-items: center;
 }
 
+.completed {
+    color: gainsboro;
+    font-weight: bold;
+}
+
+.no-completed {
+    color: #737373;
+}
+
 .todoItem__input {
     margin-right: 5px;
     width: 20px;
@@ -19,7 +28,6 @@
 
 .content__label {
     font-size: 1.5rem;
-    color: #737373;
 }
 
 .content__hour {
