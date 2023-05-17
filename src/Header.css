@@ -1,4 +1,6 @@
 .app__header {
+    background-color: #FF4F5A;
+    color: white;
     display: flex;
     flex-direction: row;
     align-items: center;

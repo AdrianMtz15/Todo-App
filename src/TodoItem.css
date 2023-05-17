@@ -8,6 +8,7 @@
 .completed {
     color: gainsboro;
     font-weight: bold;
+    text-decoration-line: line-through;
 }
 
 .no-completed {

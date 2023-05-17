@@ -31,7 +31,13 @@ function App() {
     }
   );
 
-  console.log(todosSearched);
+  const toggleTodoComplete = (todoId, completed) => {
+    const updatedTodos = [...todos];
+    const todoItemIndex = updatedTodos.findIndex(todoItem => todoItem.id === todoId);
+    
+    updatedTodos[todoItemIndex].completed = completed;
+    setTodos(updatedTodos);
+  }
 
   return (
     <>
@@ -52,6 +58,8 @@ function App() {
                 text={todo.text} 
                 completed={todo.completed} 
                 hour={todo.hour}
+                toggleComplete={(id, completed) => toggleTodoComplete(id, completed)}
+                id={todo.id}
               />
             )) 
           }
