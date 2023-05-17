@@ -1,5 +1,6 @@
 import React from 'react';
 import './TodoItem.css';
+import trashIcon from './img/trash-solid.svg';
 
 
 function TodoItem({text, completed, hour, id, toggleComplete}) {
@@ -17,6 +18,10 @@ function TodoItem({text, completed, hour, id, toggleComplete}) {
         <section className='todoItem__content'>
           <label className={`${completed ? 'completed' : 'no-completed'} content__label`}>{text}</label>
           <span className='content__hour'>{hour}</span>
+        </section>
+
+        <section className='todoItem__trash'>
+          <img className='trash__icon' alt='trash icon' src={trashIcon}/>
         </section>
       </li>
     </>

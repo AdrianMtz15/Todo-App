@@ -1,6 +1,12 @@
-.disabled {
-    display: none;
+.app__todoList {
+    width: 100%;
+    height: max-content;
+    padding: 0 10px 0 10px;
 }
+
+/* .disabled {
+    display: none;
+} */
 
 .todoList__head {
     display: flex;
