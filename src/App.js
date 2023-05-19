@@ -39,6 +39,14 @@ function App() {
     setTodos(updatedTodos);
   }
 
+  const deleteTodo = (todoId) => {
+    const updatedTodos = [...todos];
+    const todoItemIndex = updatedTodos.findIndex(todoItem => todoItem.id === todoId);
+
+    updatedTodos.splice(todoItemIndex, 1);
+    setTodos(updatedTodos);
+  } 
+
   return (
     <>
         <Header/>
@@ -60,6 +68,7 @@ function App() {
                 hour={todo.hour}
                 toggleComplete={(id, completed) => toggleTodoComplete(id, completed)}
                 id={todo.id}
+                deleteTodo={(id) => deleteTodo(id)}
               />
             )) 
           }

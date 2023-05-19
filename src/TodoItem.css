@@ -39,10 +39,18 @@
 }
 
 .trash__icon {
+    background-image: url('./img/trash-solid.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 30px;
     height: 30px;
     position: absolute;
     right: 0;
     top: 50%;
     transform: translate(0, -50%);
+}
+
+.trash__icon:hover {
+    fill: red;
 }

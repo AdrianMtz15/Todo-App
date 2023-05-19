@@ -1,9 +1,8 @@
 import React from 'react';
+import { ReactComponent as TrashIconSVG } from './img/trash-solid.svg';
 import './TodoItem.css';
-import trashIcon from './img/trash-solid.svg';
 
-
-function TodoItem({text, completed, hour, id, toggleComplete}) {
+function TodoItem({text, completed, hour, id, toggleComplete, deleteTodo}) {
 
   return(
     <>
@@ -21,7 +20,7 @@ function TodoItem({text, completed, hour, id, toggleComplete}) {
         </section>
 
         <section className='todoItem__trash'>
-          <img className='trash__icon' alt='trash icon' src={trashIcon}/>
+          <TrashIconSVG onClick={() => deleteTodo(id)} className='trash__icon'/>
         </section>
       </li>
     </>
