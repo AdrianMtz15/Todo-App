@@ -16,16 +16,13 @@ import { TodoSearch } from './TodoSearch';
 // ]
 
 function App() {
-  let savedTodos = [];
-  const localTodos = JSON.parse(localStorage.getItem('TODO_APP'));
+  let localTodos = JSON.parse(localStorage.getItem('TODO_APP'));
 
-  if(localTodos) {
-    savedTodos = localTodos;
-  } else {
-    savedTodos = []
-  }
+  if(!localTodos) {
+    localTodos = [];
+  } 
 
-  const [todos, setTodos] = React.useState(savedTodos);
+  const [todos, setTodos] = React.useState(localTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
