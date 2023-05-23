@@ -15,22 +15,29 @@ import { TodoSearch } from './TodoSearch';
 //   { text: "Tarea 5", completed: true, hour: "13:00", id: 5}
 // ]
 
-function App() {
-  let localTodos = JSON.parse(localStorage.getItem('TODO_APP'));
+function useLocalStorage(itemName, itemData) {
+  let localItems = JSON.parse(localStorage.getItem(itemName));
 
-  if(!localTodos) {
-    localTodos = [];
+  if(!localItems) {
+    localItems = itemData
   } 
 
-  const [todos, setTodos] = React.useState(localTodos);
+  const [item, setItems] = React.useState(localItems);
+
+  const saveItem = (items) => {
+    localStorage.setItem(itemName, JSON.stringify(items));
+    setItems(items);
+  }
+
+  return [item, saveItem];
+}
+
+function App() {
+  const [todos, saveTodos] = useLocalStorage('TODO_APP', []);
   const [searchValue, setSearchValue] = React.useState('');
+
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
-
-  const saveTodos = (updatedTodos) => {
-    localStorage.setItem('TODO_APP', JSON.stringify(updatedTodos));
-    setTodos(updatedTodos);
-  }
 
   const todosSearched = todos.filter(
     (todo) => {
