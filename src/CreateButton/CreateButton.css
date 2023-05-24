@@ -1,7 +1,4 @@
 .createBtn {
-    /* background-image: url('./img/btnCreate.png');
-    background-size: cover;
-    background-position: center; */
     position: fixed;
     right: 18px;
     bottom: 50px;
@@ -19,7 +16,4 @@
 .createBtnCenter {
     width: 17px;
     height: 17px;
-    background-image: url('./img/Vector.png');
-    background-position: center;
-    background-size: cover;
 }

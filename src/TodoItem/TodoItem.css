@@ -39,10 +39,6 @@
 }
 
 .trash__icon {
-    background-image: url('./img/trash-solid.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     width: 30px;
     height: 30px;
     position: absolute;

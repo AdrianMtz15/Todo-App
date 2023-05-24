@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as TrashIconSVG } from './img/trash-solid.svg';
+import { ReactComponent as TrashIconSVG } from '../assets/img/trash-solid.svg';
 import './TodoItem.css';
 
 function TodoItem({text, completed, hour, id, toggleComplete, deleteTodo}) {

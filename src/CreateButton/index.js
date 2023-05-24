@@ -1,9 +1,10 @@
 import './CreateButton.css';
+import { ReactComponent as AddSVG } from '../assets/img/Vector.svg';
 
 function CreateButton() {
   return(
     <button className='createBtn'>
-      <p className='createBtnCenter'></p>
+      <AddSVG></AddSVG>
     </button>
   );
 }
