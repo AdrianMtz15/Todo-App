@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import { Header } from './Header';
-import { TodoItem } from './TodoItem';
-import { TodoList } from './TodoList';
-import { CreateButton } from './CreateButton';
-import { TodoSearch } from './TodoSearch';
+import { Header } from '../Header';
+import { TodoItem } from '../TodoItem';
+import { TodoList } from '../TodoList';
+import { CreateButton } from '../CreateButton';
+import { TodoSearch } from '../TodoSearch';
+
+import { useLocalStorage } from './LocalStorage';
 
 // const defaultTodos = [
 //   { text: "Tarea 1", completed: true, hour: "13:00", id: 1 },
@@ -15,22 +17,7 @@ import { TodoSearch } from './TodoSearch';
 //   { text: "Tarea 5", completed: true, hour: "13:00", id: 5}
 // ]
 
-function useLocalStorage(itemName, itemData) {
-  let localItems = JSON.parse(localStorage.getItem(itemName));
 
-  if(!localItems) {
-    localItems = itemData
-  } 
-
-  const [item, setItems] = React.useState(localItems);
-
-  const saveItem = (items) => {
-    localStorage.setItem(itemName, JSON.stringify(items));
-    setItems(items);
-  }
-
-  return [item, saveItem];
-}
 
 function App() {
   const [todos, saveTodos] = useLocalStorage('TODO_APP', []);
