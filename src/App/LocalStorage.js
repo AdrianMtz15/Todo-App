@@ -1,23 +1,20 @@
-import React from "react";
 
-function useLocalStorage(itemName, itemData) {
-    let localItems = JSON.parse(localStorage.getItem(itemName));
+function setLocalStorage(itemName, itemData) {
+    localStorage.setItem(itemName, JSON.stringify(itemData));
+}
 
-    if(!localItems) {
-        localItems = itemData
-    } 
-
-    const [item, setItems] = React.useState(localItems);
-
-    const saveItem = (items) => {
-        localStorage.setItem(itemName, JSON.stringify(items));
-        setItems(items);
+function getLocalStorage(itemName) {
+    let localStorageItem = JSON.parse(localStorage.getItem(itemName));
+    
+    if(!localStorageItem) {
+        return false;
+    }else {
+        return localStorageItem;
     }
-
-    return [item, saveItem];
 }
 
 export { 
-    useLocalStorage
+    setLocalStorage,
+    getLocalStorage
 }
 

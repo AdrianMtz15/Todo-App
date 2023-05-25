@@ -1,13 +1,6 @@
 import React from 'react';
-import './App.css';
-
-import { Header } from '../Header';
-import { TodoItem } from '../TodoItem';
-import { TodoList } from '../TodoList';
-import { CreateButton } from '../CreateButton';
-import { TodoSearch } from '../TodoSearch';
-
-import { useLocalStorage } from './LocalStorage';
+import { AppUI } from './AppUI';
+import { getLocalStorage, setLocalStorage } from './LocalStorage';
 
 // const defaultTodos = [
 //   { text: "Tarea 1", completed: true, hour: "13:00", id: 1 },
@@ -17,12 +10,20 @@ import { useLocalStorage } from './LocalStorage';
 //   { text: "Tarea 5", completed: true, hour: "13:00", id: 5}
 // ]
 
-
-
 function App() {
-  const [todos, saveTodos] = useLocalStorage('TODO_APP', []);
+  // React State used for DEFAULT TODOS
+  const defaultTodos = getLocalStorage('TODO_APP') || [];
+  const [todos, setTodos] = React.useState(defaultTodos);
+
+  const saveTodos = (updatedTodos) => {
+    setTodos(updatedTodos);
+    setLocalStorage('TODO_APP', updatedTodos);
+  }
+
+  // React State used for input in TodoSearch Component
   const [searchValue, setSearchValue] = React.useState('');
 
+  // Derivative States
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
 
@@ -52,51 +53,15 @@ function App() {
   } 
 
   return (
-    <>
-        <Header/>
-
-        <TodoSearch 
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          completedTodos={completedTodos}
-          totalTodos={totalTodos}
-        />
-
-        <TodoList title={"Today"}>
-          { 
-            todosSearched.map(todo => (
-              <TodoItem 
-                key={todo.id} 
-                text={todo.text} 
-                completed={todo.completed} 
-                hour={todo.hour}
-                toggleComplete={(id, completed) => toggleTodoComplete(id, completed)}
-                id={todo.id}
-                deleteTodo={(id) => deleteTodo(id)}
-              />
-            )) 
-          }
-        </TodoList>
-
-        {/* <TodoList title={"Tomorrow"}>
-          { 
-            todos.map(todo => (
-              <TodoItem 
-                key={todos.indexOf(todo)} 
-                text={todo.text} 
-                completed={todo.completed} 
-                hour={todo.hour}
-                />
-            )) 
-          }
-        </TodoList> */}
-
-        <CreateButton/>
-
-      {/* <section className='app__footer'>
-        
-      </section> */}
-    </>
+    <AppUI 
+    searchValue={searchValue}
+    setSearchValue={setSearchValue}
+    completedTodos={completedTodos}
+    totalTodos={totalTodos}
+    todosSearched={todosSearched}
+    toggleTodoComplete={toggleTodoComplete}
+    deleteTodo={deleteTodo}
+    />
   );
 }
 

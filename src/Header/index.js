@@ -1,5 +1,6 @@
 import './Header.css';
-import profileImg from '../assets/img/profile.png'
+import profileImg from '../assets/img/profile.png';
+
 
 function Header() {
   return(
