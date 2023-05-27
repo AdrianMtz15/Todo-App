@@ -12,7 +12,9 @@ function AppUI({
     totalTodos,
     todosSearched,
     toggleTodoComplete,
-    deleteTodo
+    deleteTodo,
+    loading,
+    error
 }) {
     return (
         <>
@@ -26,17 +28,19 @@ function AppUI({
             />
 
             <TodoList title={"Today"}>
-            {todosSearched.map(todo => (
-                <TodoItem 
-                    key={todo.id} 
-                    text={todo.text} 
-                    completed={todo.completed} 
-                    hour={todo.hour}
-                    toggleComplete={(id, completed) => toggleTodoComplete(id, completed)}
-                    id={todo.id}
-                    deleteTodo={(id) => deleteTodo(id)}
-                />
-            ))}
+                {error && <p>Lo sentimos, hubo un error</p>}
+                {loading && <p>Estamos cargando</p>}
+                {todosSearched.map(todo => (
+                    <TodoItem 
+                        key={todo.id} 
+                        text={todo.text} 
+                        completed={todo.completed} 
+                        hour={todo.hour}
+                        toggleComplete={(id, completed) => toggleTodoComplete(id, completed)}
+                        id={todo.id}
+                        deleteTodo={(id) => deleteTodo(id)}
+                    />
+                ))}
 
             </TodoList>
             

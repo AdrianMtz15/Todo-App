@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppUI } from './AppUI';
-import { getLocalStorage, setLocalStorage } from './LocalStorage';
+import { useLocalStorage } from './LocalStorage';
 
 // const defaultTodos = [
 //   { text: "Tarea 1", completed: true, hour: "13:00", id: 1 },
@@ -9,23 +9,15 @@ import { getLocalStorage, setLocalStorage } from './LocalStorage';
 //   { text: "Tarea 4", completed: true, hour: "13:00", id: 4},
 //   { text: "Tarea 5", completed: true, hour: "13:00", id: 5}
 // ]
+// localStorage.setItem('TODO_APP', JSON.stringify(defaultTodos))
 
 function App() {
-  // React State used for DEFAULT TODOS
-  const defaultTodos = getLocalStorage('TODO_APP') || [];
-  const [todos, setTodos] = React.useState(defaultTodos);
-
-  const saveTodos = (updatedTodos) => {
-    setTodos(updatedTodos);
-    setLocalStorage('TODO_APP', updatedTodos);
-  }
-
-  // React State used for input in TodoSearch Component
+  const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODO_APP', []);
   const [searchValue, setSearchValue] = React.useState('');
 
-  // Derivative States
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
+
 
   const todosSearched = todos.filter(
     (todo) => {
@@ -54,13 +46,15 @@ function App() {
 
   return (
     <AppUI 
-    searchValue={searchValue}
-    setSearchValue={setSearchValue}
-    completedTodos={completedTodos}
-    totalTodos={totalTodos}
-    todosSearched={todosSearched}
-    toggleTodoComplete={toggleTodoComplete}
-    deleteTodo={deleteTodo}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      todosSearched={todosSearched}
+      toggleTodoComplete={toggleTodoComplete}
+      deleteTodo={deleteTodo}
+      loading={loading}
+      error={error}
     />
   );
 }
