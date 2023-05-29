@@ -6,44 +6,43 @@ import { CreateButton } from '../CreateButton';
 import { TodoSearch } from '../TodoSearch';
 import { TodoLoader } from '../TodoLoader/TodoLoader';
 
-function AppUI({
-    searchValue,
-    setSearchValue,
-    completedTodos,
-    totalTodos,
-    todosSearched,
-    toggleTodoComplete,
-    deleteTodo,
-    loading,
-    error
-}) {
+import { TodoContext } from '../TodoContext/TodoContext';
+
+function AppUI() {
     return (
         <>
             <Header/>
 
-            <TodoSearch 
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            completedTodos={completedTodos}
-            totalTodos={totalTodos}
-            />
+            <TodoSearch/>
 
-            <TodoList title={"Today"}>
-                {error && <p>Lo sentimos, hubo un error</p>}
-                {loading && <TodoLoader/>}
-                {todosSearched.map(todo => (
-                    <TodoItem 
-                        key={todo.id} 
-                        text={todo.text} 
-                        completed={todo.completed} 
-                        hour={todo.hour}
-                        toggleComplete={(id, completed) => toggleTodoComplete(id, completed)}
-                        id={todo.id}
-                        deleteTodo={(id) => deleteTodo(id)}
-                    />
-                ))}
+            <TodoContext.Consumer>
+                {({
+                    todosSearched,
+                    toggleTodoComplete,
+                    deleteTodo,
+                    loading,
+                    error
+                 }) => (
+                    <TodoList title={"Today"}>
+                    {error && <p>Lo sentimos, hubo un error</p>}
+                    {loading && <TodoLoader/>}
+                    {todosSearched.map(todo => (
+                        <TodoItem 
+                            key={todo.id} 
+                            text={todo.text} 
+                            completed={todo.completed} 
+                            hour={todo.hour}
+                            toggleComplete={(id, completed) => toggleTodoComplete(id, completed)}
+                            id={todo.id}
+                            deleteTodo={(id) => deleteTodo(id)}
+                        />
+                    ))}
 
-            </TodoList>
+                    </TodoList>
+                )}
+            </TodoContext.Consumer>
+
+
             
             <CreateButton/>
         </>

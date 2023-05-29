@@ -46,3 +46,12 @@ function useLocalStorage(itemName, initialValue) {
 }
 
 export { useLocalStorage };
+
+// const defaultTodos = [
+//   { text: "Tarea 1", completed: true, hour: "13:00", id: 1 },
+//   { text: "Tarea 2", completed: false, hour: "13:00", id: 2},
+//   { text: "Tarea 3", completed: false, hour: "13:00", id: 3 },
+//   { text: "Tarea 4", completed: true, hour: "13:00", id: 4},
+//   { text: "Tarea 5", completed: true, hour: "13:00", id: 5}
+// ]
+// localStorage.setItem('TODO_APP', JSON.stringify(defaultTodos))
