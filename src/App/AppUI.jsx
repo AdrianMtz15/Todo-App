@@ -4,6 +4,7 @@ import { TodoItem } from '../TodoItem';
 import { TodoList } from '../TodoList';
 import { CreateButton } from '../CreateButton';
 import { TodoSearch } from '../TodoSearch';
+import { TodoLoader } from '../TodoLoader/TodoLoader';
 
 function AppUI({
     searchValue,
@@ -29,7 +30,7 @@ function AppUI({
 
             <TodoList title={"Today"}>
                 {error && <p>Lo sentimos, hubo un error</p>}
-                {loading && <p>Estamos cargando</p>}
+                {loading && <TodoLoader/>}
                 {todosSearched.map(todo => (
                     <TodoItem 
                         key={todo.id} 

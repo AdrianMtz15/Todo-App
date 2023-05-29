@@ -12,12 +12,13 @@ import { useLocalStorage } from './LocalStorage';
 // localStorage.setItem('TODO_APP', JSON.stringify(defaultTodos))
 
 function App() {
-  const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODO_APP', []);
+  const {item: todos, setItem: saveTodos, loading, error} = useLocalStorage('TODO_APP', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
 
+  console.log(2);
 
   const todosSearched = todos.filter(
     (todo) => {
