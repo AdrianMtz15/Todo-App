@@ -1,8 +1,14 @@
 import React from "react";
 import './TodoSearch.css';
+import { TodoContext } from "../TodoContext/TodoContext";
 
-function TodoSearch({searchValue, setSearchValue, totalTodos, completedTodos}) {
-
+function TodoSearch() {
+    const {
+        searchValue,
+        setSearchValue,
+        completedTodos,
+        totalTodos,
+    } = React.useContext(TodoContext);
     return (
         <>
             <section className="app__todoSearch">
