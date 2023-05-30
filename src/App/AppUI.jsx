@@ -5,9 +5,10 @@ import { TodoContext } from '../TodoContext/TodoContext';
 import { Header } from '../Header/Header';
 import { TodoItem } from '../TodoItem';
 import { TodoList } from '../TodoList';
-import { CreateButton } from '../CreateButton';
+import { CreateButton } from '../CreateButton/CreateTodoButton';
 import { TodoSearch } from '../TodoSearch/TodoSearch';
 import { TodoLoader } from '../TodoLoader/TodoLoader';
+import { Modal } from '../Modal/Modal';
 
 
 function AppUI() {
@@ -16,7 +17,8 @@ function AppUI() {
         toggleTodoComplete,
         deleteTodo,
         loading,
-        error
+        error,
+        openModal,
     } = React.useContext(TodoContext);
 
     return (
@@ -40,6 +42,10 @@ function AppUI() {
                     />
                 ))}
             </TodoList>
+
+            {
+                openModal && <Modal>Sección del Modal</Modal>
+            }
             
             <CreateButton/>
         </>
