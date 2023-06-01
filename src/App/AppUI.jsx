@@ -9,6 +9,7 @@ import { CreateButton } from '../CreateButton/CreateTodoButton';
 import { TodoSearch } from '../TodoSearch/TodoSearch';
 import { TodoLoader } from '../TodoLoader/TodoLoader';
 import { Modal } from '../Modal/Modal';
+import { TodoForm } from '../TodoForm/TodoForm';
 
 
 function AppUI() {
@@ -43,9 +44,11 @@ function AppUI() {
                 ))}
             </TodoList>
 
-            {
-                openModal && <Modal>Sección del Modal</Modal>
-            }
+            { openModal && (
+                <Modal>
+                    <TodoForm/>
+                </Modal>
+            )}
             
             <CreateButton/>
         </>
